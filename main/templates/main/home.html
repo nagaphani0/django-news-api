@@ -1,0 +1,53 @@
+{% extends "main/base.html" %}
+{% load static %}
+<style type="text/css">
+	body {
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+	}
+
+	main {
+		flex: 1 0 auto;
+	}
+</style>
+
+{% block contents %}
+
+<div class="row">
+	{% for art in articles %}
+
+	<div class="col s12 m12">
+
+		<a href="{{ art.url }}">
+			<div class="card blue darken-1 hoverable">
+				<div class="card-content white-text">
+					<img src='{{ art.urlToImage }}' class="card-img-top" alt="">
+					<div class="card-body">
+						<span class="card-title">{{ art.title|safe }}</span>
+						<hr>
+						<p>Author: {{ art.author|safe }}</p>
+						<p style="font-size: 70%">Published {{ art.publishedAt|safe }}</p>
+						<p>Description <br> {{ art.description|safe }}</p>
+					</div>
+				</div>
+		</a>
+	</div>
+	{% endfor %}
+</div>
+<div class="card mb-3" style="max-width: 540px;">
+	<div class="row g-0">
+		<div class="col-md-4">
+			<img src="prabas.jpg" class="img-fluid rounded-start" alt="">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+					content. This content is a little bit longer.</p>
+				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
